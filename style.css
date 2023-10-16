@@ -1,0 +1,46 @@
+:root[data-theme="light"] {
+    --text: #081801;
+    --background: #fcfffa;
+    --primary: #9cd3a6;
+    --secondary: #38613f;
+    --accent: #ffea00;
+  }
+
+  :root[data-theme="dark"] {
+    --text: #eefee7;
+    --background: #020500;
+    --primary: #2c6336;
+    --secondary: #9ec7a5;
+    --accent: #ffea00;
+  }
+
+  body {
+    color:#081801;
+  }
+
+  .timer {
+    font-family: 'Exo 2', sans-serif;
+    display: inline-block;
+    padding: 24px 32px;
+    border-radius: 30px;
+    background:#fcfffa;
+  }
+
+  .timer__part {
+    font-size: 36px;
+    font-weight: bold;
+  }
+
+  .timer__btn {
+    width: 50px;
+    height: 50px;
+    font-size: 36px;
+    margin-left: 16px;
+    border-radius: 50%;
+    border: none;
+    background-color:#9cd3a6;
+  }
+
+  .timer__btn--start,  .timer__btn--stop {
+    background: #ffea00;
+  }
