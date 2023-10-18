@@ -11,8 +11,6 @@ export default class Timer {
 
         this.interval = null;
         this.remainingSeconds = 0;
-
-        this.updateInterfaceTime
         
         this.el.control.addEventListener('click', () => {
             //needs code
@@ -23,11 +21,44 @@ export default class Timer {
         })
     };
 
+    //controls time display on timer
     updateInterfaceTime() {
         const minutes = Math.floor(this.remainingSeconds / 60);
         const seconds = this.remainingSeconds % 60;
+
+        this.el.minutes.textContent = minutes.toString().padStart(2, "0");
+        this.el.seconds.textContent = minutes.toString().padStart(2, "0");
     }
 
+    //controls display of play or pause button
+    updateInterfaceControls() {
+        if (this.interval === null) {
+            this.el.control.innerHTML = `<span class="material-icons-round">play_arrow</span>`;
+            this.el.control.classList.add("timer__btn--start");
+            this.el.control.classList.remove("timer__btn--stop");
+        } else {
+            this.el.control.innerHTML = `<span class="material-icons-round">pause</span>`;
+            this.el.control.classList.add("timer__btn--stop");
+            this.el.control.classList.remove("timer__btn--start");
+        }
+    }
+
+    start() {
+        if (this.remainingSeconds === 0) return;
+
+        this.interval = setInterval(() => {
+            this.remainingSeconds--;
+            this.updateInterfaceTime();
+
+            if (this.remainingSeconds === 0) {
+                this.stop();
+            }
+        }, 1000)
+
+        this.updateInterfaceControls();
+    }
+
+    //timer HTML
     static getHTML() {
         return `
             <span class="timer__part timer__part--minutes">00</span>
